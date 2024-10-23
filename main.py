@@ -27,7 +27,8 @@ while True:
         else:
             break
     line = line.strip()
-    line += " ↩"
+    line = " " + line
+    line += "↩"
     # print line fat
     print("\033[1m" + line + "\033[0m")
 

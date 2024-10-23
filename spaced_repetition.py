@@ -12,7 +12,7 @@ class State:
         self.is_known[: min(n_init_chars, self.n)] = True
 
         self.time = np.ones(self.n) * -1e10
-        self.time[: min(n_init_chars, self.n)] = c.MAX_TIME
+        self.time[: min(n_init_chars, self.n)] = c.NEW_CHAR_TIME * c.NEW_CHAR_FACTOR
 
         """ first reference words are alphabet """
         self.ref_words = np.array(reference_words)
@@ -33,15 +33,6 @@ class State:
             + np.random.rand(self.n_ref_words) * c.MAX_TIME * 0.1
         )
         argsort = np.argsort(word_ranks)[::-1]
-        # words = self.ref_words[argsort]
-        # ranks = word_ranks[argsort]
-        # all = list(zip(words, ranks))
-
-        # alph_sort = np.argsort(self.rank)
-        # ran = self.rank[alph_sort]
-        # alp = self.alphabet[alph_sort]
-        # all2 = list(zip(alp, ran))
-        # pass
         for idx in argsort:
             yield self.ref_words[idx]
 
@@ -59,5 +50,13 @@ class State:
             for i in range(self.n):
                 if not self.is_known[i]:
                     self.is_known[i] = True
-                    self.time[i] = c.MAX_TIME
+                    self.time[i] = c.NEW_CHAR_TIME * c.NEW_CHAR_FACTOR
+                    # print in green
+                    print(
+                        "\033[92m"
+                        + "You unlocked a new character: self.alphabet[i]. Congratulations! \n"
+                        + "\033[0m",
+                        end="",
+                        flush=True,
+                    )
                     break
