@@ -2,3 +2,4 @@ state.pkl
 .vscode/
 .vscode/*
 .vscode
+__pycache__/
