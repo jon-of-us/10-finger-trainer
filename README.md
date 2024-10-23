@@ -1,0 +1,1 @@
+Train typing without looking at the keyboard with spaced repetition
