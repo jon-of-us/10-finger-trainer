@@ -41,7 +41,10 @@ class State:
 
     def update_char(self, char, time_s):
         char_idx = np.where(self.alphabet == char)[0]
+        if not char in self.alphabet or not self.is_known[char_idx]:
+            return
         self.rank[char_idx] = self.rank[char_idx] * self.ease[char_idx]
+        time_s = max(c.PERFECT_TIME_S, min(c.FORGOT_TIME_S, time_s))
         badness = (time_s - c.PERFECT_TIME_S) / (c.FORGOT_TIME_S - c.PERFECT_TIME_S)
         badness = max(0, min(1, badness))
         ease = self.ease[char_idx] + 0.1 - badness * 5 * (0.08 + 5 * badness * 0.02)
