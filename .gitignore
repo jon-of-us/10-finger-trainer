@@ -3,4 +3,5 @@ state.pkl
 .vscode/*
 .vscode
 __pycache__
+__pycache__/*
 config.cpython-311.pyc
