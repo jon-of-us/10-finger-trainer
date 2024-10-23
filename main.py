@@ -20,14 +20,13 @@ else:
 while True:
     # generate line
 
-    line = ""
+    line = []
     for word in state.sorted_words():
-        if len(line) + len(word) < c.LINE_LEN:
-            line += word + " "
+        if sum(len(word) for word in line) + len(word) < c.LINE_LEN:
+            line.append(word)
         else:
             break
-    line = line.strip()
-    line = " " + line
+    line = " ".join(line[::-1])
     line += "↩"
     # print line fat
     print("\033[1m" + line + "\033[0m")
@@ -66,13 +65,15 @@ while True:
             else:
                 # print with red background
                 print("\033[41m" + char + "\033[0m", end="", flush=True)
-
+    print()
     if is_perfect_run:
         # perfect run in green letters on normal background
-        print("\033[32m" + "\nPerfect run!" + "\033[0m", end="")
-    print("\n")
+        print("\033[32m" + "Perfect run!" + "\033[0m")
 
     # update state
-    for char, time_s, _ in input_chars:
-        state.update_char(char, time_s)
+    for i, (char, time_s, _) in enumerate(input_chars):
+        if i != 0:
+            state.update_char(char, time_s)
     pickle.dump(state, open("state.pkl", "wb"))
+
+    print()

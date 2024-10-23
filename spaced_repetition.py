@@ -33,6 +33,12 @@ class State:
             + np.random.rand(self.n_ref_words) * c.MAX_TIME * 0.1
         )
         argsort = np.argsort(word_ranks)[::-1]
+        args = np.argsort(self.time)[::-1]
+        alph = self.alphabet[args]
+        times = self.time[args]
+        times = list(zip(alph, times))
+        word_ranks = list(zip(self.ref_words[argsort], word_ranks[argsort]))
+        pass
         for idx in argsort:
             yield self.ref_words[idx]
 
@@ -46,7 +52,9 @@ class State:
         self.time[char_idx] += (1 - c.TIME_FADE_FACTOR) * time_s
 
         # add new chars
-        if np.max(self.time) < c.NEW_CHAR_TIME:
+        
+        max_time = np.max(self.time)
+        if max_time < c.NEW_CHAR_TIME:
             for i in range(self.n):
                 if not self.is_known[i]:
                     self.is_known[i] = True
@@ -54,9 +62,9 @@ class State:
                     # print in green
                     print(
                         "\033[92m"
-                        + "You unlocked a new character: self.alphabet[i]. Congratulations! \n"
-                        + "\033[0m",
-                        end="",
-                        flush=True,
+                        + "You unlocked a new character: "
+                        + self.alphabet[i]
+                        + "\n"
+                        + "\033[0m"
                     )
                     break
