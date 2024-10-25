@@ -2,7 +2,7 @@ from spaced_repetition import State
 import pickle
 import os
 import config as c
-from msvcrt import getwch
+from read_char import getwch
 import time
 import numpy as np
 
