@@ -15,6 +15,7 @@ for file in os.listdir("./"):
 else:
     state = State(c.ALPHABET, c.WORDS)
 
+print("\nWelcome!\nType the words you see.\nDont look at the keyboard.\nBe fast to unlock new characters.\nPress Ctrl+C to exit.\nLets go!!!\n")
 
 # main loop
 while True:
@@ -72,8 +73,12 @@ while True:
 
     # update state
     for i, (char, time_s, _) in enumerate(input_chars):
-        if i != 0:
-            state.update_char(char, time_s)
+        #ignore first and double
+        if i == 0:
+            continue
+        if char == input_chars[i - 1][0]:
+            continue
+        state.update_char(char, time_s)
     pickle.dump(state, open("state.pkl", "wb"))
 
     print()

@@ -24,13 +24,17 @@ class State:
             ]
         )
         self.reference_word_lens = np.array([len(word) for word in reference_words])
+    
+    def print_first_n_chars(self, n):
+        for i in range(n):
+            print(f"{self.alphabet[i]}: {self.time[i]}")
 
     def sorted_words(self):
         """word represented by index"""
 
         word_ranks = (
             self.char_counts @ self.time / self.reference_word_lens
-            + np.random.rand(self.n_ref_words) * c.MAX_TIME * 0.1
+            + np.random.rand(self.n_ref_words) * c.MAX_TIME * 0.4
         )
         argsort = np.argsort(word_ranks)[::-1]
         args = np.argsort(self.time)[::-1]
@@ -38,7 +42,6 @@ class State:
         times = self.time[args]
         times = list(zip(alph, times))
         word_ranks = list(zip(self.ref_words[argsort], word_ranks[argsort]))
-        pass
         for idx in argsort:
             yield self.ref_words[idx]
 

@@ -10002,7 +10002,6 @@
 10068	Größter	16
 10069	HRE	16
 10070	Haaren	16
-10071	Hass	16
 10072	Hatten	16
 10073	Hinweisen	16
 10074	Holocaust	16
@@ -10059,8 +10058,6 @@
 10125	Morgens	16
 10126	Mädels	16
 10127	Nachdenken	16
-10128	Nennen	16
-10129	Netanjahu	16
 10130	Note	16
 10131	Nötig	16
 10132	Ordner	16
@@ -11216,7 +11213,6 @@
 11282	Narren	14
 11283	Nationalpark	14
 11284	Nebenbei	14
-11285	Neid	14
 11286	Nest	14
 11287	Neubaus	14
 11288	Neubeginn	14
@@ -13053,7 +13049,6 @@
 13119	griffen	12
 13120	grosser	12
 13121	halbiert	12
-13122	hasse	12
 13123	haut	12
 13124	heilbar	12
 13125	hiermit	12
@@ -14792,7 +14787,6 @@
 14858	Radfahren	10
 14859	Radtour	10
 14860	Ranking	10
-14861	Rasse	10
 14862	Ratlosigkeit	10
 14863	Ratten	10
 14864	Recherchen	10
@@ -18443,7 +18437,6 @@
 18509	müßt	8
 18510	nach diesem	8
 18511	nachgegangen	8
-18512	neidisch	8
 18513	neigt sich	8
 18514	nennenswerten	8
 18515	nettes	8
@@ -19814,7 +19807,6 @@
 19880	Quecksilber	7
 19881	Radfahrerin	7
 19882	Ramsauer	7
-19883	Rassen	7
 19884	Raster	7
 19885	Rastplatz	7
 19886	Rates	7
