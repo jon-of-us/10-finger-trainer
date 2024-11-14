@@ -37,21 +37,21 @@ while True:
     last_time = time.time()
     while len(input_chars) < len(line):
         char = getwch()
-        if char == "\x03":  # Ctrl+C sends ASCII 3 (ETX)
+        if char == "\x03" or char == "\x04":  # Ctrl+C sends ASCII 3 (ETX), Ctrl+D sends ASCII 4 (EOT) on Mac
             print()
             print("Ciao!")
 
             # save state
             pickle.dump(state, open("state.pkl", "wb"))
             exit()
-        # ignore enter
-        elif char == "\x08":
+        # 
+        elif char == "\x08" or ord(char) == 127:
             if len(input_chars) > 0:
                 print("\x08 \x08", end="", flush=True)
                 input_chars.pop()
         else:
-            if char == "\r":
-                char = "↩"
+            # if char == "\r":
+            #     char = "↩"
             now = time.time()
             is_correct = char == line[len(input_chars)]
             is_perfect_run = is_perfect_run and is_correct
