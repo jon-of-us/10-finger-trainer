@@ -50,8 +50,8 @@ while True:
                 print("\x08 \x08", end="", flush=True)
                 input_chars.pop()
         else:
-            # if char == "\r":
-            #     char = "↩"
+            if char == "\r":
+                break
             now = time.time()
             is_correct = char == line[len(input_chars)]
             is_perfect_run = is_perfect_run and is_correct
